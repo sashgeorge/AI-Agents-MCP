@@ -1,0 +1,7 @@
+azure-ai-projects
+azure-identity
+python-dotenv
+mcp[cli]>=1.4.1
+opentelemetry-api
+opentelemetry-sdk
+azure-monitor-opentelemetry
