@@ -78,7 +78,7 @@ class MCPClient:
         response = await self.session.call_tool(tool_name, input_schema)
         print(f"{YELLOW}\nResponse from tool:{RESET} {response}")
 
-        #call "query_default_agent" tool with query 
+        #call "query_default_agent" tool with query "What is the weather today?" connect_agent
         query = "How to reset router?"
         tool_name = "query_default_agent"
         input_schema = {
@@ -87,7 +87,7 @@ class MCPClient:
         response = await self.session.call_tool(tool_name, input_schema)
         print(f"{YELLOW}\nResponse from tool:{RESET} {response}")
 
-        #Call "connect_agent" tool with agent_id  and query 
+        #Call "connect_agent" tool with agent_id "my-agent" and query "What is the weather today?"
         query = "calculate 9+(6x7)/5-1"
         agent_id = "asst_hmSnWbQpaNJVTMxzXu0e8m2m"
         tool_name = "connect_agent" 
@@ -99,7 +99,10 @@ class MCPClient:
         print(f"{YELLOW}\nResponse from tool:{RESET} {response}")
 
 
-
+    
+    async def cleanup(self):
+        """Clean up resources"""
+        await self.exit_stack.aclose()
 
 async def main():
     # if len(sys.argv) < 2:
